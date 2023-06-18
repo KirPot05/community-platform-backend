@@ -8,3 +8,5 @@ const router = Router();
 router.post("/", authMiddleware, addMember);
 
 router.delete("/:id", authMiddleware, removeMember);
+
+export default router;

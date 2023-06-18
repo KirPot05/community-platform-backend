@@ -41,7 +41,7 @@ export async function userSignUp(req, res) {
       data: {
         name: newUser.name,
         email: newUser.email,
-        created_at: newUser.created_at,
+        created_at: newUser.createdAt,
       },
       meta: {
         access_token: token,
@@ -87,7 +87,7 @@ export async function userSignIn(req, res) {
         id: user.id,
         name: user.name,
         email: user.email,
-        created_at: user.created_at,
+        created_at: user.createdAt,
       },
       meta: {
         access_token: token,

@@ -24,7 +24,7 @@ const authMiddleware = async (req, res, next) => {
       return res.status(403).json(failed_response(403, "Unauthorized access"));
     }
 
-    req.user = user;
+    req.user = user.dataValues;
 
     next();
   } catch (error) {

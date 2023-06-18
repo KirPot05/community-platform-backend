@@ -32,16 +32,19 @@ const memberSchema = schema.define(
 
 memberSchema.hasOne(userSchema, {
   sourceKey: "user",
+  as: "userId",
   foreignKey: "id",
 });
 
 memberSchema.hasOne(roleSchema, {
   sourceKey: "role",
+  as: "roleId",
   foreignKey: "id",
 });
 
 memberSchema.hasOne(communitySchema, {
   sourceKey: "community",
+  as: "communityId",
   foreignKey: "id",
 });
 

@@ -1,8 +1,11 @@
 import express, { urlencoded, json } from "express";
 import morgan from "morgan";
 import cors from "cors";
-import { DB_PASSWORD, DB_SCHEMA, DB_USER, NODE_ENV } from "./config/index.js";
-import User from "./models/User.js";
+import { NODE_ENV } from "./config/index.js";
+import authRoutes from "./routes/auth.js";
+import roleRoutes from "./routes/role.js";
+import communityRoutes from "./routes/community.js";
+import memberRoutes from "./routes/member.js";
 
 export function startServer() {
   const app = express();
@@ -17,11 +20,13 @@ export function startServer() {
   app.use(json());
 
   app.get("/", async (req, res) => {
-    const users = await User.findAll();
-    console.log(users);
-
     res.send("Nothing found here");
   });
+
+  app.use("/v1/auth", authRoutes);
+  app.use("/v1/role", roleRoutes);
+  app.use("/v1/community", communityRoutes);
+  app.use("/v1/member", memberRoutes);
 
   return app;
 }

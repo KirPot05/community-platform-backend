@@ -26,3 +26,5 @@ router.post(
 router.post("/signin", userSignIn);
 
 router.get("/me", authMiddleware, getUser);
+
+export default router;

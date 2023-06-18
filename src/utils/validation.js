@@ -1,3 +1,5 @@
+import { validationResult } from "express-validator";
+
 export const strongPassword = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -5,8 +7,9 @@ export const strongPassword = (req, res, next) => {
   }
 
   const { password } = req.body;
+
   const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$/;
   if (!passwordRegex.test(password)) {
     return res.status(400).json({
       error:
